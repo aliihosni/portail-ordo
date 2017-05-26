@@ -189,10 +189,6 @@ else {
             <script type="text/javascript">
                 $(function () {
                     $('#datatables').DataTable({
-                        dom: 'Bfrtip',
-                        buttons: [
-                            'copy', 'csv', 'excel', 'pdf', 'print'
-                        ]
                     });
                 });
                 $(function(){
@@ -308,7 +304,13 @@ else {
 <script src="plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
 
+<script type="text/javascript" src="js/tableExport.js"></script>
+<script type="text/javascript" src="js/jquery.base64.js"></script>
 
+
+        <script type="text/javascript" src="ExportExcel/jspdf/libs/sprintf.js">
+        <script type="text/javascript" src="ExportExcel/jspdf/jspdf.js">
+        <script type="text/javascript" src="ExportExcel/jspdf/libs/base64.js">
 
 <!-- bootstrap datepicker -->
 <script src="plugins/datepicker/bootstrap-datepicker.js"></script>
