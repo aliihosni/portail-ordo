@@ -312,7 +312,9 @@ else {
         <script type="text/javascript" src="ExportExcel/jspdf/jspdf.js">
         <script type="text/javascript" src="ExportExcel/jspdf/libs/base64.js">
 
-<!-- bootstrap datepicker -->
+            <script type="text/javascript" src="ExportExcel/html2canvas.js">
+
+            <!-- bootstrap datepicker -->
 <script src="plugins/datepicker/bootstrap-datepicker.js"></script>
 <!-- Select2 -->
 <script src="plugins/select2/select2.full.min.js"></script>
