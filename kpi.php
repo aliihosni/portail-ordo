@@ -20,6 +20,10 @@ include('aside.php');
         </ol>
     </section>
 
+
+
+
+
     <!-- Main content -->
     <section class="content">
 
@@ -207,131 +211,135 @@ include('aside.php');
 
 <?php
 
-
-if(isset($_POST["fichier_atp"])){
-
-    require("PHPExcel/reader.php"); // php excel reader
-    $file= $_POST['fichier'] ;
-    $connection=new Spreadsheet_Excel_Reader(); // our main object
-    $connection->read($file);
-    ini_set('max_execution_time', 1000);
-
-
-    $rowSize = count(@$connection->sheets[0]["cells"] ) ;                                   // nombre de ligne
-    $columnSize = max( array_map('count', @$connection->sheets[0]["cells"]) ) ;             // nombre de colonnes
-
-
-    $startrow=1;
-    $endrow= $rowSize+1;
-    $startcol=1;
-    $endcol=$columnSize+1;
-    $l= 1;
-    $c= 1;
-    $excel = array();
-    $dmo = 0; $dmc = 0; $dma = 0;
-
-
-    for($i=2;$i<10;$i++)
-    { // we read row to row
-
-        for ($j=$startcol;$j<$endcol;$j++)
-            // we read col to col
-        {
-
-            if ( ord(@$connection->sheets[0]["cells"][$i][$j] )==0){ @$excel[$l][$c]= "NULL" ;}
-            else { @$excel[$l][$c]= @$connection->sheets[0]["cells"][$i][$j] ;}
-            $excel[$l][$c]= mysql_real_escape_string($excel[$l][$c]);
-
-            //   echo @$excel[$l][$c]; echo "*****";
-            $c++;
-        }
-        $sql= " INSERT IGNORE INTO tp   Values('".$excel[$l][1]."','".$excel[$l][2]."','".$excel[$l][3]."','".$excel[$l][4]."','".gmdate("Y-m-d H:i:s", ($excel[$l][5] - 25569) * 86400+1)."','".gmdate("Y-m-d H:i:s", ($excel[$l][6] - 25569) * 86400+1)."','".gmdate("Y-m-d H:i:s", ($excel[$l][7] - 25569) * 86400+1)."','".gmdate("Y-m-d H:i:s", ($excel[$l][8] - 25569) * 86400+1)."','".gmdate("Y-m-d H:i:s", ($excel[$l][9] - 25569) * 86400+1)."','".$excel[$l][10]."','".$excel[$l][11] ."','".$excel[$l][12]."') ";
-        //echo $sql;
+if (isset($_POST['submit'])) {
 
 
 
-        $res=     mysql_query($sql, $conexion_orange) or die(mysql_error());
+
+    if ($_POST['submit'] == 'atp') {
+        require("PHPExcel/reader.php"); // php excel reader
+        $file= $_POST['fichier'] ;
+        $connection=new Spreadsheet_Excel_Reader(); // our main object
+        $connection->read($file);
+        ini_set('max_execution_time', 1000);
 
 
+        $rowSize = count(@$connection->sheets[0]["cells"] ) ;                                   // nombre de ligne
+        $columnSize = max( array_map('count', @$connection->sheets[0]["cells"]) ) ;             // nombre de colonnes
+
+
+        $startrow=1;
+        $endrow= $rowSize+1;
+        $startcol=1;
+        $endcol=$columnSize+1;
+        $l= 1;
         $c= 1;
-        $l++;
+        $excel = array();
+        $dmo = 0; $dmc = 0; $dma = 0;
+
+
+        for($i=2;$i<10;$i++)
+        { // we read row to row
+
+            for ($j=$startcol;$j<$endcol;$j++)
+                // we read col to col
+            {
+
+                if ( ord(@$connection->sheets[0]["cells"][$i][$j] )==0){ @$excel[$l][$c]= "NULL" ;}
+                else { @$excel[$l][$c]= @$connection->sheets[0]["cells"][$i][$j] ;}
+                $excel[$l][$c]= mysql_real_escape_string($excel[$l][$c]);
+
+                //   echo @$excel[$l][$c]; echo "*****";
+                $c++;
+            }
+            $sql= " INSERT IGNORE INTO tp   Values('".$excel[$l][1]."','".$excel[$l][2]."','".$excel[$l][3]."','".$excel[$l][4]."','".gmdate("Y-m-d H:i:s", ($excel[$l][5] - 25569) * 86400+1)."','".gmdate("Y-m-d H:i:s", ($excel[$l][6] - 25569) * 86400+1)."','".gmdate("Y-m-d H:i:s", ($excel[$l][7] - 25569) * 86400+1)."','".gmdate("Y-m-d H:i:s", ($excel[$l][8] - 25569) * 86400+1)."','".gmdate("Y-m-d H:i:s", ($excel[$l][9] - 25569) * 86400+1)."','".$excel[$l][10]."','".$excel[$l][11] ."','".$excel[$l][12]."') ";
+            //echo $sql;
+
+
+
+            $res=     mysql_query($sql, $conexion_orange) or die(mysql_error());
+
+
+            $c= 1;
+            $l++;
+        }
+
     }
 
-}
 
 
-
-if(isset($_POST["fichier_gtr"])){
-
-    require("PHPexcel/reader.php"); // php excel reader
-    $file= "C:\Users\ASUS\Downloads\GTR.xls";
-    //$file= ".$_POST['fichier'].";
-    $connection=new Spreadsheet_Excel_Reader(); // our main object
-    $connection->read($file);
+    if ($_POST['submit'] == 'gtr') {
+        require("PHPexcel/reader.php"); // php excel reader
+        $file= "C:\Users\ASUS\Downloads\GTR.xls";
+        //$file= ".$_POST['fichier'].";
+        $connection=new Spreadsheet_Excel_Reader(); // our main object
+        $connection->read($file);
 
 
-    $rowSize = count(@$connection->sheets[0]["cells"] ) ;                                   // nombre de ligne
-    $columnSize = max( array_map('count', @$connection->sheets[0]["cells"]) ) ;             // nombre de colonnes
+        $rowSize = count(@$connection->sheets[0]["cells"] ) ;                                   // nombre de ligne
+        $columnSize = max( array_map('count', @$connection->sheets[0]["cells"]) ) ;             // nombre de colonnes
 
 
-    $startrow=1;
-    $endrow= $rowSize+1;
-    $startcol=1;
-    $endcol=$columnSize+1;
-    $l= 1;
-    $c= 1;
-    $excel = array();
-    mysql_select_db($database_conexion_orange, $conexion_orange);
-
-
-    for($i=2;$i<$endrow;$i++)
-    { // we read row to row
-
-        for ($j=$startcol;$j<$endcol;$j++)
-            // we read col to col
-        {
-
-            if ( ord(@$connection->sheets[0]["cells"][$i][$j] )==0){ @$excel[$l][$c]= "NULL" ;}
-            else { @$excel[$l][$c]= @$connection->sheets[0]["cells"][$i][$j] ;}
-            $excel[$l][$c]= mysql_real_escape_string($excel[$l][$c]);
-
-            //   echo @$excel[$l][$c]; echo "*****";
-            $c++;
-        }
-        $sql= " INSERT INTO gtr (`debut_incident`,`code_noeud`,`zone`,`impact_service`,`nature`,`duree`,`origine`,`sous_famille`,`cel2g`,`cel3g`,`cause`,`action_corrective`,`ticket`,`eds_activation`,`IDIT`,`duree_activation`,`duree_relle`,`seuil_gtr`,`respect_gtr`) Values('".gmdate("Y-m-d H:i:s", ($excel[$l][1] - 25569) * 86400+1)."','".$excel[$l][2]."','".$excel[$l][3]."','".$excel[$l][4]."','".$excel[$l][5]."','".$excel[$l][6]."','".$excel[$l][7]."','".$excel[$l][8]."','".$excel[$l][9]."','".$excel[$l][10]."','".$excel[$l][11]."','".$excel[$l][12]."','".$excel[$l][13]."','".gmdate("Y-m-d H:i:s", ($excel[$l][14] - 25569) * 86400+1)."','".$excel[$l][15]."','".$excel[$l][16]."','".$excel[$l][17]."','".$excel[$l][18]."','".$excel[$l][19]."' ) ";
-        //echo $sql;
-
-
-
-        $res=     mysql_query($sql, $conexion_orange) or die(mysql_error());
-
-
+        $startrow=1;
+        $endrow= $rowSize+1;
+        $startcol=1;
+        $endcol=$columnSize+1;
+        $l= 1;
         $c= 1;
-        $l++;
+        $excel = array();
+        mysql_select_db($database_conexion_orange, $conexion_orange);
+
+
+        for($i=2;$i<$endrow;$i++)
+        { // we read row to row
+
+            for ($j=$startcol;$j<$endcol;$j++)
+                // we read col to col
+            {
+
+                if ( ord(@$connection->sheets[0]["cells"][$i][$j] )==0){ @$excel[$l][$c]= "NULL" ;}
+                else { @$excel[$l][$c]= @$connection->sheets[0]["cells"][$i][$j] ;}
+                $excel[$l][$c]= mysql_real_escape_string($excel[$l][$c]);
+
+                //   echo @$excel[$l][$c]; echo "*****";
+                $c++;
+            }
+            $sql= " INSERT INTO gtr (`debut_incident`,`code_noeud`,`zone`,`impact_service`,`nature`,`duree`,`origine`,`sous_famille`,`cel2g`,`cel3g`,`cause`,`action_corrective`,`ticket`,`eds_activation`,`IDIT`,`duree_activation`,`duree_relle`,`seuil_gtr`,`respect_gtr`) Values('".gmdate("Y-m-d H:i:s", ($excel[$l][1] - 25569) * 86400+1)."','".$excel[$l][2]."','".$excel[$l][3]."','".$excel[$l][4]."','".$excel[$l][5]."','".$excel[$l][6]."','".$excel[$l][7]."','".$excel[$l][8]."','".$excel[$l][9]."','".$excel[$l][10]."','".$excel[$l][11]."','".$excel[$l][12]."','".$excel[$l][13]."','".gmdate("Y-m-d H:i:s", ($excel[$l][14] - 25569) * 86400+1)."','".$excel[$l][15]."','".$excel[$l][16]."','".$excel[$l][17]."','".$excel[$l][18]."','".$excel[$l][19]."' ) ";
+            //echo $sql;
+
+
+
+            $res=     mysql_query($sql, $conexion_orange) or die(mysql_error());
+
+
+            $c= 1;
+            $l++;
+        }
     }
-}
 
 
+//add-kpi
 
-if(isset($_POST["kpi"])){
-
-
-    $sql2= " ALTER TABLE ".$_POST['table2']."  ADD ".$_POST['kpi']." ".$_POST['type']."   ";
-
-    $res2=  mysql_query($sql2, $conexion_orange) or die(mysql_error());
-
-    $sql3= " INSERT INTO kpi (`nom`,`table`)VALUES ('".$_POST['kpi']."','".$_POST['table2']."');  ";
-
-    $res3=  mysql_query($sql3, $conexion_orange) or die(mysql_error());
-}
+    if ($_POST['submit'] == 'k') {
 
 
+        $sql2= " ALTER TABLE ".$_POST['table2']."  ADD ".$_POST['kpi']." ".$_POST['type']."   ";
+
+        $res2=  mysql_query($sql2, $conexion_orange) or die(mysql_error());
+
+        $sql3= " INSERT INTO kpi (`nom`,`table`)VALUES ('".$_POST['kpi']."','".$_POST['table2']."');  ";
+
+        $res3=  mysql_query($sql3, $conexion_orange) or die(mysql_error());
+    }
 
 
-if(isset($_POST["formule"])){
+//add-formule
 
-    $sql3= utf8_decode(" UPDATE ".$_POST['table3']." SET ".$_POST['nom']." = ".$_POST['formule']." ");
-    $res3=  mysql_query($sql3, $conexion_orange) or die(mysql_error());
+    if ($_POST['submit'] == 'f') {
+
+        $sql3= utf8_decode(" UPDATE ".$_POST['table3']." SET ".$_POST['nom']." = ".$_POST['formule']." ");
+        $res3=  mysql_query($sql3, $conexion_orange) or die(mysql_error());
+    }
 }
 
 

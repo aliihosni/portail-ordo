@@ -52,7 +52,7 @@ $result = mysql_query("SELECT * FROM `swan_h+24` WHERE `Etat` Like 'plani%' and 
                     </div>
                 <!-- /.box-header -->
                     <div class="box-body ">
-                        <div class="container">
+                        <div class="">
 
 
 
@@ -115,21 +115,22 @@ $result = mysql_query("SELECT * FROM `swan_h+24` WHERE `Etat` Like 'plani%' and 
 </div>
 <!-- /.row -->
 
-<div class="modal fade bs-example-modal-lg modal-success" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="email">
+<div class="modal fade bs-example-modal-lg " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="email">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <div class="modal-header bg-success text-green">
+            <div class="modal-header bg-success text-info">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Alerte</h4>
             </div>
 
             <div class="modal-body">
+
+
+
                 <?php
-                $to = "hosni.exe@gmail.com";
-                //$to = "21627283536@orange.com";
 
-                $subject = "TP H+24";
 
+                $result = mysql_query("SELECT * FROM `swan_h+24` WHERE `Etat` Like 'plani%' and `debut` > '2016-07-29 08:00:00' ORDER BY `Etat` ASC  ") ;
 
                 $message  = '
   
@@ -137,8 +138,8 @@ $result = mysql_query("SELECT * FROM `swan_h+24` WHERE `Etat` Like 'plani%' and 
   
 <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=\"100%\" style=\'width:100.0%;border-collapse:collapse\' >
           <tr style=\'height:26.25pt\'>
-		     <td width=75 style=\'width:56.25pt;border:solid #FF8000 1.0pt;background:black;padding:0cm 0cm 0cm 0cm;height:26.25pt\'><p class=MsoNormal align=center style=\'text-align:center\'><b><span style=\'color:#FF8000\'>Réf ATP</span></b><b><span style=\'font-size:12.0pt;color:#FF8000\'><o:p></o:p></span></b></p></td>
-			  <td width=78 style=\'width:58.5pt;border:solid #FF8000 1.0pt;border-left:none;background:black;padding:0cm 0cm 0cm 0cm;height:26.25pt\'><p class=MsoNormal align=center style=\'text-align:center\'><b><span style=\'color:#FF8000\'>Début</span></b><b><span style=\'font-size:12.0pt;color:#FF8000\'><o:p></o:p></span></b></p></td>
+		     <td width=75 style=\'width:56.25pt;border:solid #FF8000 1.0pt;background:black;padding:0cm 0cm 0cm 0cm;height:26.25pt\'><p class=MsoNormal align=center style=\'text-align:center\'><b><span style=\'color:#FF8000\'>R&eacute;f ATP</span></b><b><span style=\'font-size:12.0pt;color:#FF8000\'><o:p></o:p></span></b></p></td>
+			  <td width=78 style=\'width:58.5pt;border:solid #FF8000 1.0pt;border-left:none;background:black;padding:0cm 0cm 0cm 0cm;height:26.25pt\'><p class=MsoNormal align=center style=\'text-align:center\'><b><span style=\'color:#FF8000\'>D&eacute;but</span></b><b><span style=\'font-size:12.0pt;color:#FF8000\'><o:p></o:p></span></b></p></td>
 			  <td width=78 style=\'width:58.5pt;border:solid #FF8000 1.0pt;border-left:none;background:black;padding:0cm 0cm 0cm 0cm;height:26.25pt\'><p class=MsoNormal align=center style=\'text-align:center\'><b><span style=\'color:#FF8000\'>Fin</span></b><b><span style=\'font-size:12.0pt;color:#FF8000\'><o:p></o:p></span></b></p></td>
 			  <td width=78 style=\'width:58.5pt;border:solid #FF8000 1.0pt;border-left:none;background:black;padding:0cm 0cm 0cm 0cm;height:26.25pt\'><p class=MsoNormal align=center style=\'text-align:center\'><b><span style=\'color:#FF8000\'>Durée(HH:mm)</span></b><b><span style=\'font-size:12.0pt;color:#FF8000\'><o:p></o:p></span></b></p></td>
                                   
@@ -245,18 +246,90 @@ $result = mysql_query("SELECT * FROM `swan_h+24` WHERE `Etat` Like 'plani%' and 
 
 
 
+                $email="hosni.exe@gmail.com";
+                $name="ORANGE TN";
+
+                date_default_timezone_set('Etc/UTC');
+
+                require './PHPMailer-master/PHPMailerAutoload.php';
+
+                //Create a new PHPMailer instance
+                $mail = new PHPMailer;
+
+                //Tell PHPMailer to use SMTP
+                $mail->isSMTP();
+
+                /*
+                omarchaari00@hotmail.fr
+                AKol4521.klo@i
+                */
+
+                //Enable SMTP debugging
+                // 0 = off (for production use)
+                // 1 = client messages
+                // 2 = client and server messages
+                $mail->SMTPDebug = 0;
+
+                //Ask for HTML-friendly debug output
+                $mail->Debugoutput = 'html';
+
+                //Set the hostname of the mail server
+                $mail->Host = 'smtp.live.com';
+                // use
+                // $mail->Host = gethostbyname('smtp.gmail.com');
+                // if your network does not support SMTP over IPv6
+
+                //Set the SMTP port number - 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
+                $mail->Port = 587;
+
+                //Set the encryption system to use - ssl (deprecated) or tls
+                $mail->SMTPSecure = 'tls';
+
+                //Whether to use SMTP authentication
+                $mail->SMTPAuth = true;
+
+                //Username to use for SMTP authentication - use full email address for gmail
+                $mail->Username = "amalchaariorange@hotmail.com";
+                //Password to use for SMTP authentication
+                $mail->Password = "orange2017";
+
+                //Set who the message is to be sent from
+                $mail->setFrom("amalchaariorange@hotmail.com", 'First Last');
+
+                //Set an alternative reply-to address
+                $mail->addReplyTo("amalchaariorange@hotmail.com", 'First Last');
+
+                //Set who the message is to be sent to
+                $mail->addAddress($email, $name);
+
+                //Set the subject line
+                $mail->Subject = 'TP H+24';
+
+                //Read an HTML message body from an external file, convert referenced images to embedded,
+                //convert HTML into a basic plain-text alternative body
+                //$mail->msgHTML(file_get_contents('contents.html'), dirname(__FILE__));
+
+                $mail->msgHTML(utf8_decode($message));
+                //Replace the plain text body with one created manually
+                //$mail->AltBody = 'This is a plain-text message body test 1';
+
+                //Attach an image file
+                //$mail->addAttachment('images/phpmailer_mini.png');
+
+                //send the message, check for errors
+
+
+                if ($mail->send()) {
+                        echo '<div class="alert alert-success" role="alert"><center >    E-mail envoyé avec succés  </center></div>';
+                }else{
+                    echo '<div class="alert alert-danger" role="alert"><center>    Echec d\'envoi E-mail  </center></div>';
+                }
 
 
 
-                // Always set content-type when sending HTML email
-                $headers = "MIME-Version: 1.0" . "\r\n";
-                $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
-
-
-                mail($to,$subject,$message,$headers);
                 ?>
-                <center>    E-mail envoyé avec succés  </center>
+
 
             </div>
 

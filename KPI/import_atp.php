@@ -11,7 +11,7 @@
                 </div>
 
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-success pull-right">Valider</button>
+                    <button type="submit" value="atp" name="submit" class="btn btn-success pull-right">Valider</button>
                 </div>
 
 

@@ -107,7 +107,7 @@
 
 
 
-                $sql2 = "SELECT DISTINCT S.Etat as 'etat', D.equipe, S.Demandeur FROM swan S, demandeur D where (S.fin >= CURRENT_DATE - INTERVAL 7 DAY) and (S.fin <= CURRENT_DATE) and S.Etat NOT LIKE 'TERMINE%' and D.Demandeur=S.Demandeur+'%'";;
+                $sql2 = "SELECT DISTINCT S.Etat as 'etat', D.equipe, S.Demandeur FROM swan S, demandeur D where (S.fin >= CURRENT_DATE - INTERVAL 7 DAY) and (S.fin <= CURRENT_DATE) and S.Etat NOT LIKE 'TERMINE%' and D.Demandeur=S.Demandeur+'%' GROUP BY D.equipe";;
                 $result2=mysql_query(utf8_decode($sql2));
 
 

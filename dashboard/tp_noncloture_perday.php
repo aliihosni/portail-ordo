@@ -1,6 +1,7 @@
 
 
 
+
 <style type="text/css">
     ${demo.css}
 </style>
@@ -10,9 +11,9 @@
 <script>
 
     $(function () {
-        $('#tp_clo_m_1').highcharts({
-            colors: [ '#477abf','#ff0066', '#eeaaee','#f0cc00', '#DF5353', '#00a65a',
-                '#f39c12', '#ff442d', '#00a65a', '#477abf', '#477abf',],
+        $('#tp_clo_d_1').highcharts({
+            colors: ['#f39c12', '#ff442d', '#00a65a', '#ff0066','#477abf', '#aaeeee',  '#eeaaee',
+                '#f0cc00', '#DF5353', '#7798BF', '#aaeeee'],
             chart: {
                 backgroundColor: null,
                 style: {
@@ -21,7 +22,9 @@
                 type: 'column'
             },
             title: {
-                text: '<?php  echo date('M Y',strtotime("-1 month")); ?> ',
+                text: '<?php
+                    $day = mysql_query("SELECT dayname((CURRENT_DATE - INTERVAL 1 DAY)) as 'day'  ") ;
+                    while($row = mysql_fetch_array($day)) { echo $row['day'];} ?> ',
                 style: {
                     fontSize: '16px',
                     fontWeight: 'bold',
@@ -32,7 +35,7 @@
             xAxis: {
                 categories: [
                     <?php
-                    $sql = "SELECT `Etat` as 'etat' FROM swan where (`fin` >= CURRENT_DATE - INTERVAL 1 MONTH) and (`fin` <= CURRENT_DATE) and `Etat` NOT LIKE 'TERMINE%' GROUP BY `Etat` ";
+                    $sql = "SELECT `Etat` as 'etat' FROM swan where (`fin` >= CURRENT_DATE - INTERVAL 1 DAY) and (`fin` <= CURRENT_DATE) and `Etat` NOT LIKE 'TERMINE%' GROUP BY `Etat` ";
                     $result=mysql_query($sql);
 
                     while($row = mysql_fetch_array($result)) {
@@ -106,7 +109,7 @@
 
 
 
-                $sql2 = "SELECT DISTINCT S.Etat as 'etat', D.equipe, S.Demandeur FROM swan S, demandeur D where (S.fin >= CURRENT_DATE - INTERVAL 1 MONTH) and (S.fin <= CURRENT_DATE) and S.Etat NOT LIKE 'TERMINE%' and D.Demandeur=S.Demandeur+'%' GROUP BY D.equipe";
+                $sql2 = "SELECT DISTINCT S.Etat as 'etat', D.equipe, S.Demandeur FROM swan S, demandeur D where (S.fin >= CURRENT_DATE - INTERVAL 7 DAY) and (S.fin <= CURRENT_DATE) and S.Etat NOT LIKE 'TERMINE%' and D.Demandeur=S.Demandeur+'%' GROUP BY D.equipe";;
                 $result2=mysql_query(utf8_decode($sql2));
 
 
@@ -116,12 +119,12 @@
                     $inci = utf8_encode($row2["Demandeur"]);
                     $incid = utf8_encode($row2["equipe"]);
                     $tab = "{ name : '".utf8_encode($incid)."' , data : [";
-                    $sql = "SELECT `Etat` as 'etat' FROM swan where (`fin` >= CURRENT_DATE - INTERVAL 1 MONTH) and (`fin` <= CURRENT_DATE) and `Etat` NOT LIKE 'TERMINE%' GROUP BY `Etat` ";
+                    $sql = "SELECT `Etat` as 'etat' FROM swan where (`fin` >= CURRENT_DATE - INTERVAL 1 DAY) and (`fin` <= CURRENT_DATE) and `Etat` NOT LIKE 'TERMINE%' GROUP BY `Etat` ";
                     $result=mysql_query($sql);
                     while($row = mysql_fetch_array($result)) {
                         $user = utf8_encode($row["etat"]);
 
-                        $sql3 = "SELECT COUNT(*) AS 'number' FROM swan where (`fin` >= CURRENT_DATE - INTERVAL 1 MONTH) and (`fin` <= CURRENT_DATE) and `Etat` LIKE '".$user."' and `Demandeur` LIKE '".$inci."' ";
+                        $sql3 = "SELECT COUNT(*) AS 'number' FROM swan where (`fin` >= CURRENT_DATE - INTERVAL 1 DAY) and (`fin` <= CURRENT_DATE) and `Etat` LIKE '".$user."' and `Demandeur` LIKE '".$inci."' ";
                         $result3=mysql_query(utf8_decode($sql3));
                         while($row3 = mysql_fetch_array($result3)) {
                             $tab .=  $row3["number"] . "," ;
@@ -136,7 +139,6 @@
 
 
                 ?>
-
 
             ]
         });

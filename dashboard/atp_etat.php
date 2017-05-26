@@ -1,4 +1,58 @@
+<?php
 
+$last_moday =  date('Y-m-d',strtotime('last monday' , strtotime('tomorrow'))) ;
+
+$next_monday = date('Y-m-d',strtotime('next monday')) ;
+
+
+$begin = new DateTime( $last_moday );
+$end = new DateTime( $next_monday );
+
+$interval = new DateInterval('P1D');
+$daterange = new DatePeriod($begin, $interval ,$end);
+
+
+$tab = array();
+$sql = ("SELECT demandeur.equipe, swan.Demandeur FROM swan,demandeur where demandeur.`Demandeur`=swan.`Demandeur`+'%' and STR_TO_DATE(fin , '%Y-%m-%d' ) between STR_TO_DATE('".$last_moday."' , '%Y-%m-%d') and STR_TO_DATE('".$next_monday."' , '%Y-%m-%d') group by demandeur.equipe");
+$result = mysql_query($sql);
+
+while($row = mysql_fetch_array($result)) {
+
+    if ( !isset($tab[utf8_encode($row["Demandeur"])]) && $row["Demandeur"]!="" && $row["Demandeur"]!=" " && $row["Demandeur"]!="Demandeur" ) {
+
+        $tab[utf8_encode($row["Demandeur"])] = '{ name :"'. utf8_encode($row["equipe"]).'" , data: ['  ;
+
+    }
+
+
+}
+
+
+foreach($daterange as $date){
+
+
+    $d = $date->format("Y-m-d") ;
+
+    $sql2 = ("SELECT demandeur.equipe, swan.Demandeur FROM swan,demandeur where demandeur.`Demandeur`=swan.`Demandeur`+'%' and STR_TO_DATE(fin , '%Y-%m-%d' ) between STR_TO_DATE('".$last_moday."' , '%Y-%m-%d') and STR_TO_DATE('".$next_monday."' , '%Y-%m-%d') group by demandeur.equipe");
+    $result2 = mysql_query($sql2);
+
+    while($row2 = mysql_fetch_array($result2)) {
+
+        $sql3 = ("SELECT count(*) as 'number' FROM swan where STR_TO_DATE(fin , '%Y-%m-%d' ) = STR_TO_DATE('".$d."' , '%Y-%m-%d') and Demandeur = '".$row2["Demandeur"]."' ");
+        $result3 = mysql_query($sql3);
+        while($row3 = mysql_fetch_array($result3)) {
+
+            $tab[utf8_encode($row2["Demandeur"])] = $tab[utf8_encode($row2["Demandeur"])] .$row3["number"]. ",";
+
+        }
+
+    }
+    mysql_data_seek($result2,0);
+
+}
+
+
+?>
 
 
 <style type="text/css">
@@ -10,8 +64,8 @@
 <script>
 
     $(function () {
-        $('#tp_clo_m_1').highcharts({
-            colors: [ '#477abf','#ff0066', '#eeaaee','#f0cc00', '#DF5353', '#00a65a',
+        $('#atp_etat').highcharts({
+            colors: [ '#477abf','#ff0066','#f0cc00', '#eeaaee', '#DF5353', '#00a65a',
                 '#f39c12', '#ff442d', '#00a65a', '#477abf', '#477abf',],
             chart: {
                 backgroundColor: null,
@@ -21,7 +75,7 @@
                 type: 'column'
             },
             title: {
-                text: '<?php  echo date('M Y',strtotime("-1 month")); ?> ',
+                text: ' ',
                 style: {
                     fontSize: '16px',
                     fontWeight: 'bold',
@@ -30,16 +84,7 @@
             },
 
             xAxis: {
-                categories: [
-                    <?php
-                    $sql = "SELECT `Etat` as 'etat' FROM swan where (`fin` >= CURRENT_DATE - INTERVAL 1 MONTH) and (`fin` <= CURRENT_DATE) and `Etat` NOT LIKE 'TERMINE%' GROUP BY `Etat` ";
-                    $result=mysql_query($sql);
-
-                    while($row = mysql_fetch_array($result)) {
-                        echo "'".utf8_encode($row["etat"])."',";
-                    }
-                    ?>
-                ],
+                categories: ['Lundi', 'Mardi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche', 'Lundi'],
                 gridLineWidth: 1,
                 labels: {
                     style: {
@@ -52,7 +97,7 @@
                 min: 0,
                 minorTickInterval: 'auto',
                 title: {
-                    text: 'Toc per user',
+                    text: 'Nombre des ATP',
                     style: {
                         textTransform: 'uppercase'
                     }
@@ -103,37 +148,12 @@
             background2: '#F0F0EA',
             series: [
                 <?php
+                foreach ($tab as &$value) {
 
+                    $value = $value . "] }, ";
+                    echo $value;
 
-
-                $sql2 = "SELECT DISTINCT S.Etat as 'etat', D.equipe, S.Demandeur FROM swan S, demandeur D where (S.fin >= CURRENT_DATE - INTERVAL 1 MONTH) and (S.fin <= CURRENT_DATE) and S.Etat NOT LIKE 'TERMINE%' and D.Demandeur=S.Demandeur+'%' GROUP BY D.equipe";
-                $result2=mysql_query(utf8_decode($sql2));
-
-
-
-                while($row2 = mysql_fetch_array($result2)) {
-                    $tab="";
-                    $inci = utf8_encode($row2["Demandeur"]);
-                    $incid = utf8_encode($row2["equipe"]);
-                    $tab = "{ name : '".utf8_encode($incid)."' , data : [";
-                    $sql = "SELECT `Etat` as 'etat' FROM swan where (`fin` >= CURRENT_DATE - INTERVAL 1 MONTH) and (`fin` <= CURRENT_DATE) and `Etat` NOT LIKE 'TERMINE%' GROUP BY `Etat` ";
-                    $result=mysql_query($sql);
-                    while($row = mysql_fetch_array($result)) {
-                        $user = utf8_encode($row["etat"]);
-
-                        $sql3 = "SELECT COUNT(*) AS 'number' FROM swan where (`fin` >= CURRENT_DATE - INTERVAL 1 MONTH) and (`fin` <= CURRENT_DATE) and `Etat` LIKE '".$user."' and `Demandeur` LIKE '".$inci."' ";
-                        $result3=mysql_query(utf8_decode($sql3));
-                        while($row3 = mysql_fetch_array($result3)) {
-                            $tab .=  $row3["number"] . "," ;
-                        }
-                    }
-                    $tab .=  "] }, ";
-                    echo $tab;
                 }
-
-
-
-
 
                 ?>
 

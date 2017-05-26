@@ -19,15 +19,6 @@
             <select  class="form-control select2" name="nom">
 
                 <?php
-                error_reporting(E_ERROR | E_WARNING | E_PARSE);
-                $hostname_conexion_orange = "localhost";
-                $database_conexion_orange = "pfe";
-                $username_conexion_orange = "root";
-                $password_conexion_orange = "";
-                $conexion_orange = mysql_pconnect($hostname_conexion_orange, $username_conexion_orange, $password_conexion_orange) or trigger_error(mysql_error(),E_USER_ERROR);
-                mysql_select_db($database_conexion_orange, $conexion_orange);
-
-
                 $get=mysql_query("SELECT distinct nom  FROM kpi ");
                 while($row = mysql_fetch_assoc($get))
                 {
@@ -53,7 +44,7 @@
     </div>
 
     <div class="box-footer">
-        <button type="submit" class="btn btn-warning pull-right">Valider</button>
+        <button type="submit" name="submit" value="f" class="btn btn-warning pull-right">Valider</button>
     </div>
 
 

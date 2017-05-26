@@ -15,6 +15,11 @@ include ('dashboard/Nombre_tp_cree2.php');
 
 include ('dashboard/tp_noncloture.php');
 include ('dashboard/tp_noncloture_perweek.php');
+include ('dashboard/tp_noncloture_perday.php');
+
+
+include ('dashboard/atp_etat.php');
+include ('dashboard/etat_atp2.php');
 
 
 
@@ -648,6 +653,105 @@ include ('aside.php');
                     <div class="box-body">
                         <div class="row">
                             <center>                  <div id="tp_clo_w_1" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                            </center>
+
+
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- ./box-body -->
+
+                    <!-- /.box-footer -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Tp non cloturés à d-1</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="row">
+                            <center>                  <div id="tp_clo_d_1" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                            </center>
+
+
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- ./box-body -->
+
+                    <!-- /.box-footer -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-warning">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Les etats des ATP anormaux</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="row">
+                            <center>                  <div id="atp_etat" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                            </center>
+
+
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- ./box-body -->
+
+                    <!-- /.box-footer -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Les états des ATP CHOTU3 et CHOTU</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="row">
+                            <center>                  <div id="atp_etat_2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
                             </center>
 
 

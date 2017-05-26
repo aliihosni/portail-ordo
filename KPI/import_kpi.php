@@ -27,7 +27,7 @@
     </div>
 
     <div class="box-footer">
-        <button type="submit" class="btn btn-danger pull-right">Valider</button>
+        <button type="submit" value="k" name="submit" class="btn btn-danger pull-right">Valider</button>
     </div>
 
 

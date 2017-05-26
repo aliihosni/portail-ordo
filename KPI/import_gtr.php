@@ -10,7 +10,7 @@
         <input type="text" class="form-control" readonly="">
     </div>
     <div class="box-footer">
-        <button type="submit" class="btn btn-info pull-right">Valider</button>
+        <button type="submit" value="gtr" name="submit" class="btn btn-info pull-right">Valider</button>
     </div>
 
 
