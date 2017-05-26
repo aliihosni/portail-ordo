@@ -1,3 +1,59 @@
+<?php
+
+if (isset($_POST['submit'])) {
+
+    session_start();
+    ob_start();
+
+    include "db.php";
+
+
+// Define $myusername and $mypassword
+    $myusername=$_POST['myusername'];
+    $mypassword=$_POST['mypassword'];
+
+// To protect MySQL injection (more detail about MySQL injection)
+    $myusername = stripslashes($myusername);
+    $mypassword = stripslashes($mypassword);
+    $myusername = mysql_real_escape_string($myusername);
+    $mypassword = mysql_real_escape_string($mypassword);
+
+    $sql="SELECT * FROM members WHERE username='$myusername' and password='$mypassword'";
+    $result=mysql_query($sql);
+    $row = mysql_fetch_array($result);
+    $role = $row['role'];
+
+
+// Mysql_num_row is counting table row
+    $count=mysql_num_rows($result);
+
+
+// If result matched $myusername and $mypassword, table row must be 1 row
+
+    if($count==1){
+
+// Register $myusername, $mypassword and redirect to file "login_success.php"
+
+        $_SESSION['myusername']=$myusername;
+        $_SESSION['mypassword']=$mypassword;
+        $_SESSION['myrole']=$role;
+
+
+        header("location:index.php");
+
+
+    }
+    else {
+        header("location:login.php");
+    }
+
+    ob_end_flush();
+}
+?>
+
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,6 +62,8 @@
     <title>Portail ORDO | Log in</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    <link rel="shortcut icon" href="favicon_0.ico" type="image/vnd.microsoft.icon" />
     <!-- Bootstrap 3.3.6 -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
@@ -16,6 +74,9 @@
     <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="plugins/iCheck/square/blue.css">
+
+
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -33,13 +94,13 @@
     <div class="login-box-body">
         <p class="login-box-msg">Connecter pour commmencer votre session</p>
 
-        <form action="index.php" method="post">
+        <form action="login.php" method="post">
             <div class="form-group has-feedback">
-                <input type="email" class="form-control" placeholder="Email">
-                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                <input name="myusername" type="text" class="form-control" placeholder="Login">
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <input type="password" class="form-control" placeholder="Mot de passe">
+                <input name="mypassword" type="password" class="form-control" placeholder="Mot de passe">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
             <div class="row">
@@ -52,7 +113,7 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-xs-4">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">Connexion</button>
+                    <button type="submit"  name="submit" class="btn btn-primary btn-block btn-flat">Connexion</button>
                 </div>
                 <!-- /.col -->
             </div>

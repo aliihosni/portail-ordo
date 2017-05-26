@@ -189,7 +189,10 @@ else {
             <script type="text/javascript">
                 $(function () {
                     $('#datatables').DataTable({
-
+                        dom: 'Bfrtip',
+                        buttons: [
+                            'copy', 'csv', 'excel', 'pdf', 'print'
+                        ]
                     });
                 });
                 $(function(){

@@ -27,7 +27,11 @@
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="dist/img/avatar.png" class="user-image" alt="User Image">
-                            <span class="hidden-xs">Utilisateur</span>
+                            <span class="hidden-xs">
+                                <?php
+                                    echo $_SESSION["myusername"];
+                                ?>
+                            </span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
@@ -45,7 +49,7 @@
                             <li class="user-footer">
 
                                 <div class="pull-right">
-                                    <a href="login.php" class="btn btn-default btn-flat">Déconnexion</a>
+                                    <a href="logout.php" class="btn btn-default btn-flat">Déconnexion</a>
                                 </div>
                             </li>
                         </ul>
