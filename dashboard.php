@@ -267,7 +267,10 @@ include ('aside.php');
 
 
 
-        <div class="row">
+        <div class="row" >
+            <div class="col-md-3">
+
+            </div>
             <div class="col-md-6">
                 <!-- USERS LIST -->
                 <div class="box box-info">
