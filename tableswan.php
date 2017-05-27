@@ -87,7 +87,7 @@ else {
                         </div>
                         <!-- /.form group -->
                         <div class="form-group"> <!-- Submit button -->
-                            <button class="btn btn-primary " name="submit" type="submit">Recherche</button>
+                            <button class="btn btn-warning " name="submit" type="submit">Recherche</button>
                         </div>
                         </form>
                 </div>
@@ -109,7 +109,7 @@ else {
                         </div>
 
                             <div class="form-group"> <!-- Submit button -->
-                                <button class="btn btn-primary " name="impact" type="submit">Recherche</button>
+                                <button class="btn btn-warning " name="impact" type="submit">Recherche</button>
                             </div>
 
 
@@ -124,10 +124,12 @@ else {
 
 
 
-                        <div class="col-md-2 col-centered ">
-                            <div class="btn-group pull-right" style=" padding: 10px;">
-                                <div class="dropdown">
-                                    <button class="btn btn-success btn-sm dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <div class="col-md-2 col-centered " >
+
+                            <label></label><br>
+                            <div class="btn-group pull-right ">
+                                <div class="dropdown ">
+                                    <button class="btn btn-warning  dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                         <span class="glyphicon glyphicon-th-list"></span> Export Table Data
 
                                     </button>
