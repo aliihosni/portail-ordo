@@ -122,7 +122,6 @@ if (isset($_POST['submit'])) {
         <!-- /.social-auth-links -->
 
         <a href="#">Oublié mon de passe</a><br>
-        <a href="register.php" class="text-center">S'inscrire</a>
 
     </div>
     <!-- /.login-box-body -->
