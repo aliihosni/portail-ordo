@@ -113,7 +113,7 @@ if (isset($_POST['submit'])) {
                 </div>
                 <!-- /.col -->
                 <div class="col-xs-4">
-                    <button type="submit"  name="submit" class="btn btn-primary btn-block btn-flat">Connexion</button>
+                    <button type="submit"  name="submit" class="btn btn-warning btn-block btn-flat">Connexion</button>
                 </div>
                 <!-- /.col -->
             </div>

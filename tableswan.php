@@ -291,7 +291,6 @@ else {
 <script src="dist/js/demo.js"></script>
 
 
-
 <!-- jQuery 2.2.3 -->
 <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
@@ -301,6 +300,12 @@ else {
 <!-- AdminLTE App -->
 <script src="dist/js/app.min.js"></script>
 
+
+<!-- bootstrap datepicker -->
+<script src="plugins/datepicker/bootstrap-datepicker.js"></script>
+<!-- Select2 -->
+<script src="plugins/select2/select2.full.min.js"></script>
+
 <script src="plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
 
@@ -308,15 +313,14 @@ else {
 <script type="text/javascript" src="js/jquery.base64.js"></script>
 
 
-        <script type="text/javascript" src="ExportExcel/jspdf/libs/sprintf.js">
-        <script type="text/javascript" src="ExportExcel/jspdf/jspdf.js">
-        <script type="text/javascript" src="ExportExcel/jspdf/libs/base64.js">
+        <script type="text/javascript" src="ExportExcel/jspdf/libs/sprintf.js"></script>
+        <script type="text/javascript" src="ExportExcel/jspdf/jspdf.js"></script>
+        <script type="text/javascript" src="ExportExcel/jspdf/libs/base64.js"></script>
 
-            <script type="text/javascript" src="ExportExcel/html2canvas.js">
+            <script type="text/javascript" src="ExportExcel/html2canvas.js"></script>
 
-            <!-- bootstrap datepicker -->
-<script src="plugins/datepicker/bootstrap-datepicker.js"></script>
-<!-- Select2 -->
-<script src="plugins/select2/select2.full.min.js"></script>
+
+
+
 </body>
 </html>

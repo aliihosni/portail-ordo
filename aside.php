@@ -36,7 +36,7 @@
                 <ul class="treeview-menu">
                     <li><a href="carte.php"><i class="fa fa-circle-o"></i> MAP</a></li>
                         <li><a href="tableswan.php"><i class="fa fa-circle-o"></i> Table</a></li>
-                    <li><a href="descreptif_null.php"><i class="fa fa-circle-o"></i> Table avec descriptif null</a></li>
+                    <li><a href="descreptif_null.php"><i class="fa fa-circle-o"></i> Table avec descriptif</a></li>
                 </ul>
             </li>
 
@@ -50,16 +50,16 @@
                     <i class="fa fa-th"></i>
                     <span>KPI</span>
                     <span class="pull-right-container">
-              <span class="label label-primary pull-right">3</span>
+              <span class="label label-primary pull-right">2</span>
             </span>
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="kpi.php"><i class="fa fa-circle-o"></i> Ajouter</a></li>
                     <li><a href="TableauDelaiAtp.php"><i class="fa fa-circle-o"></i> Tableau delai ATP</a></li>
-                    <li><a href="dashboard.php"><i class="fa fa-circle-o"></i> Dashboard</a></li>
+
                 </ul>
             </li>
-
+            <li><a href="dashboard.php"><i class="fa fa-area-chart"></i> Dashboard</a></li>
             <?php
             if( $_SESSION["myrole"] == 'admin' )
             {
