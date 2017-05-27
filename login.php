@@ -64,16 +64,17 @@ if (isset($_POST['submit'])) {
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
     <link rel="shortcut icon" href="favicon_0.ico" type="image/vnd.microsoft.icon" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
     <!-- Bootstrap 3.3.6 -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="plugins/iCheck/square/blue.css">
+
+
+    <link rel="stylesheet" href="js/css/form-elements.css">
+    <link rel="stylesheet" href="js/css/style.css">
 
 
 
@@ -86,62 +87,62 @@ if (isset($_POST['submit'])) {
     <![endif]-->
 </head>
 <body class="hold-transition login-page">
-<div class="login-box">
-    <div class="login-logo">
-        <a href="index.php"><b>Portail</b>ORDO</a>
-    </div>
-    <!-- /.login-logo -->
-    <div class="login-box-body">
-        <p class="login-box-msg">Connecter pour commmencer votre session</p>
+<!-- Top content -->
+<div class="top-content">
 
-        <form action="login.php" method="post">
-            <div class="form-group has-feedback">
-                <input name="myusername" type="text" class="form-control" placeholder="Login">
-                <span class="glyphicon glyphicon-user form-control-feedback"></span>
-            </div>
-            <div class="form-group has-feedback">
-                <input name="mypassword" type="password" class="form-control" placeholder="Mot de passe">
-                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-            </div>
+    <div class="inner-bg">
+        <div class="container">
             <div class="row">
-                <div class="col-xs-8">
-                    <div class="checkbox icheck">
-                        <label>
-                            <input type="checkbox"> Rappelle-moi
-                        </label>
+                <div class="col-sm-8 col-sm-offset-2 text">
+                    <h1><strong>Portail</strong> ORDO</h1>
+                    <div class="description">
+                        <p><small>
+                            Copyright &copy; 2017.
+                            <a target="_blank" href="http://www.orange.tn/">Orange <strong>TN</strong></a>, Tous droits réservés
+                            </small>a</p>
                     </div>
                 </div>
-                <!-- /.col -->
-                <div class="col-xs-4">
-                    <button type="submit"  name="submit" class="btn btn-warning btn-block btn-flat">Connexion</button>
-                </div>
-                <!-- /.col -->
             </div>
-        </form>
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3 form-box">
+                    <div class="form-top">
+                        <div class="form-top-left">
+                            <h3>Login</h3>
+                            <p>Connecter pour commmencer votre session:</p>
+                        </div>
+                        <div class="form-top-right">
+                            <i class="fa fa-lock"></i>
+                        </div>
+                    </div>
+                    <div class="form-bottom">
+                        <form role="form" action="" method="post" class="login-form">
+                            <div class="form-group">
+                                <label class="sr-only" for="form-username">Login</label>
+                                <input type="text" name="myusername" placeholder="Login..." class="form-username form-control" id="form-username">
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="form-password">Mot de passe</label>
+                                <input type="password" name="mypassword" placeholder="Mot de passe..." class="form-password form-control" id="form-password">
+                            </div>
+                            <button type="submit" name="submit" class="btn">Connexion</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
-        <!-- /.social-auth-links -->
-
-        <a href="#">Oublié mon de passe</a><br>
-
+        </div>
     </div>
-    <!-- /.login-box-body -->
+
 </div>
-<!-- /.login-box -->
+
 
 <!-- jQuery 2.2.3 -->
 <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="bootstrap/js/bootstrap.min.js"></script>
-<!-- iCheck -->
-<script src="plugins/iCheck/icheck.min.js"></script>
-<script>
-    $(function () {
-        $('input').iCheck({
-            checkboxClass: 'icheckbox_square-blue',
-            radioClass: 'iradio_square-blue',
-            increaseArea: '20%' // optional
-        });
-    });
-</script>
+
+
+<script src="js/jquery.backstretch.min.js"></script>
+<script src="js/scripts.js"></script>
 </body>
 </html>

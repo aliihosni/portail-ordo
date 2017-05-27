@@ -59,7 +59,7 @@
 
                 </ul>
             </li>
-            <li><a href="dashboard.php"><i class="fa fa-area-chart"></i> Dashboard</a></li>
+            <li><a href="dashboard.php"><i class="fa fa-area-chart"></i> <span>Dashboard</span></a></li>
             <?php
             if( $_SESSION["myrole"] == 'admin' )
             {
