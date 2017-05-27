@@ -99,7 +99,7 @@ if (isset($_POST['submit'])) {
                         <p><small>
                             Copyright &copy; 2017.
                             <a target="_blank" href="http://www.orange.tn/">Orange <strong>TN</strong></a>, Tous droits réservés
-                            </small>a</p>
+                            </small></p>
                     </div>
                 </div>
             </div>
