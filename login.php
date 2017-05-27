@@ -93,12 +93,12 @@ if (isset($_POST['submit'])) {
     <div class="inner-bg">
         <div class="container">
             <div class="row">
-                <div class="col-sm-8 col-sm-offset-2 text">
+                <div class="col-sm-8 col-sm-offset-2 ">
                     <h1><strong>Portail</strong> ORDO</h1>
                     <div class="description">
                         <p><small>
-                            Copyright &copy; 2017.
-                            <a target="_blank" href="http://www.orange.tn/">Orange <strong>TN</strong></a>, Tous droits réservés
+                            Copyright &copy; 2017,
+                            <a target="_blank" href="http://www.orange.tn/">Orange <strong>TN</strong></a> Tous droits réservés
                             </small></p>
                     </div>
                 </div>
