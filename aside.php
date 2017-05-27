@@ -35,8 +35,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="carte.php"><i class="fa fa-circle-o"></i> MAP</a></li>
-                        <li><a href="tableswan.php"><i class="fa fa-circle-o"></i> Table</a></li>
-                    <li><a href="descreptif_null.php"><i class="fa fa-circle-o"></i> Table avec descriptif</a></li>
+                    <li><a href="tableswan.php"><i class="fa fa-circle-o"></i> Table</a></li>
                 </ul>
             </li>
 
