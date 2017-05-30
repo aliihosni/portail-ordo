@@ -3,7 +3,7 @@
 
 <?php
 
-$sql = "SELECT MONTHNAME(`fin`) AS 'mois' FROM `atp` where `fin` BETWEEN CURRENT_DATE - INTERVAL 1 MONTH AND CURRENT_DATE ";
+$sql = "SELECT MONTHNAME(`fin`) as 'mois' , COUNT(*) AS 'NBmois' FROM `atp` where `fin` BETWEEN CURRENT_DATE - INTERVAL 1 MONTH AND CURRENT_DATE ";
 $res=mysql_query($sql);
 $sql1 = "SELECT COUNT(*) AS 'NBmois' FROM `atp` where `fin` BETWEEN CURRENT_DATE - INTERVAL 1 MONTH AND CURRENT_DATE ";
 $res1=mysql_query($sql1);
