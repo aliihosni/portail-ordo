@@ -22,8 +22,7 @@ $row1 = mysql_fetch_array($res1);
 <script type="text/javascript">
     $(function () {
         $('#nb_tp_d_1').highcharts({
-            colors: ['#dd4b39', '#f7a35c', '#90ee7e', '#7798BF', '#aaeeee', '#ff0066', '#eeaaee',
-                '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'],
+            colors: ['#ff6600', '#fedc00',  '#4fbf87', '#4bb3e8', '#9164cd', '#ffb3e5'],
             chart: {
                 type: 'column',
                 backgroundColor: null,

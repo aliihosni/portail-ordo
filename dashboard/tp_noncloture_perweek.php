@@ -12,8 +12,7 @@
 
     $(function () {
         $('#tp_clo_w_1').highcharts({
-            colors: ['#f39c12', '#ff442d', '#00a65a', '#477abf', '#aaeeee', '#ff0066', '#eeaaee',
-                '#f0cc00', '#DF5353', '#7798BF', '#aaeeee'],
+            colors: ['#ff6600', '#fedc00',  '#4fbf87', '#4bb3e8', '#9164cd', '#ffb3e5'],
             chart: {
                 backgroundColor: null,
                 style: {

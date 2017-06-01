@@ -12,8 +12,7 @@ $resk=mysql_query($sqlk);
 <script type="text/javascript">
     $(function () {
             $('#gtr').highcharts({
-                colors: ['#7cb5ec', '#f7a35c', '#90ee7e', '#7798BF', '#aaeeee', '#ff0066', '#eeaaee',
-                    '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'],
+                colors: ['#fedc00', '#ff6600', '#4fbf87', '#4bb3e8', '#9164cd', '#ffb3e5'],
                 chart: {
                     plotBackgroundColor: null,
                     plotBorderWidth: null,

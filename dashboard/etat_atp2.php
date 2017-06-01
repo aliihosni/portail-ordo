@@ -69,8 +69,7 @@ foreach($daterange as $date){
 
     $(function () {
         $('#atp_etat_2').highcharts({
-            colors: [ '#477abf','#ff0066','#f0cc00', '#eeaaee', '#DF5353', '#00a65a',
-                '#f39c12', '#ff442d', '#00a65a', '#477abf', '#477abf',],
+            colors: ['#fedc00', '#ff6600', '#4fbf87', '#4bb3e8', '#9164cd', '#ffb3e5'],
             chart: {
                 backgroundColor: null,
                 style: {
