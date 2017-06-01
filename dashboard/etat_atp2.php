@@ -87,7 +87,7 @@ foreach($daterange as $date){
             },
 
             xAxis: {
-                categories: ['Lundi', 'Mardi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche', 'Lundi'],
+                categories: ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'],
                 gridLineWidth: 1,
                 labels: {
                     style: {

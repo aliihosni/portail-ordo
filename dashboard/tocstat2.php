@@ -15,7 +15,7 @@ $res=mysql_query($sql);
     $(function () {
     $('#d_1').highcharts({
 
-        colors: ['#fedc00', '#ff6600', '#4fbf87', '#4bb3e8', '#9164cd', '#ffb3e5'],
+        colors: ['#ff6600', '#fedc00',  '#4fbf87', '#4bb3e8', '#9164cd', '#ffb3e5'],
         chart: {
             type: 'column',
             backgroundColor: null,
